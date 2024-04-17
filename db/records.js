@@ -9,6 +9,20 @@ const deleteRecord = async (id) => {
   return deletedRecord;
 }
 
+const getAllRecords = async () => {
+  try {
+    console.log(`HELLO`)
+    const {rows} = await client.query(`
+      SELECT * FROM record_library`)
+      
+      return rows;
+  } catch (error) {
+    console.log(error)
+    
+  }
+}
+
+
 const createRecord = async (artist_name, album_name, isAvailable) => {
   try {
    
@@ -27,5 +41,6 @@ const createRecord = async (artist_name, album_name, isAvailable) => {
 
 module.exports = {
   createRecord,
-  deleteRecord
+  deleteRecord,
+  getAllRecords
 }
